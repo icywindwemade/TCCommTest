@@ -12,7 +12,7 @@
 //#include "UserInfo.h"
 //#include "GlobalInclude.h"
 //#include "StoreScene.h"
-#define FnLog printf
+
 
 //##############################################################################################
 // Store

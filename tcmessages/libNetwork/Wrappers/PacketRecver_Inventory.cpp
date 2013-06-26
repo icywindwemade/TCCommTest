@@ -15,7 +15,7 @@
 //#include "CapsuleCombinePopup.h"
 //#include "CapsuleInfoPopup.h"
 //#include "StoreScene.h"
-#define FnLog printf
+
 
 //##############################################################################################
 // Inventory

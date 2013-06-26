@@ -13,7 +13,7 @@
 //#include "FriendsScene.h"
 //#include "FriendTab_FindFriends.h"
 //#include "FriendTab_GameFriends.h"
-#define FnLog printf
+
 
 //##############################################################################################
 // Friend

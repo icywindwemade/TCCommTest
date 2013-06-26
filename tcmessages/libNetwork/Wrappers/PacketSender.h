@@ -123,5 +123,9 @@ extern void OLRequestFriendState( long long *pUKey, int	iFriendCount );
 // Ranking End //////////////////////////////////////////////////////////////////////////////////
 
 //extern void OLReportGameComment( const char* pStr , int nMissionNo);
+#ifndef FnLog
+#define FnLog(...)  printf(__VA_ARGS__);printf("\n")
+#endif
+
 
 #endif // _PACKET_SENDER_H_

@@ -20,7 +20,7 @@
 #include "SingleLobbyChildScene_MissionRankInfo.h"
 #include "SingleLobbyChildScene_MissionInfo.h"
 #include "SingleResultScene.h" */
-#define FnLog printf
+
 
 //##############################################################################################
 // Ranking

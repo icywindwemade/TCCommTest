@@ -12,7 +12,7 @@
 //#include "UserInfo.h"
 #include "BuildDefine.h"
 //#include "GlobalInclude.h"
-#define FnLog printf
+
 
 #if IOS
 #include <SystemConfiguration/SCNetworkReachability.h>

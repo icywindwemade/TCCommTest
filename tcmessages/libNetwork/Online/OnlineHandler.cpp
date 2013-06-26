@@ -21,7 +21,7 @@
 //#include "GlobalDefine.h"
 #include "ServerDefine.h"
 extern int ClientNetworkStatus( const char* InHost );
-#define FnLog printf
+//#define FnLog printf
 
 #if defined ( WIN32 )
 DWORD	GetINI_Str( OUT char* szValue, IN INT ValueSize, IN LPCSTR Filename, IN LPCSTR AppName, IN LPCSTR KeyName, IN LPCSTR DefaultValue )

@@ -14,7 +14,7 @@
 //#include "MessageDefine.h"
 //#include "UserInfo.h"
 //#include "MainScene.h"
-#define FnLog printf
+
 
 
 //##############################################################################################

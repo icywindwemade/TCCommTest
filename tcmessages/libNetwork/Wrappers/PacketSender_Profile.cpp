@@ -8,7 +8,7 @@
 #include "OnlineHandler.h"
 #include "OnlineHandler.h"
 //#include "Client.h"
-#define FnLog printf
+
 
 //##############################################################################################
 // Profile

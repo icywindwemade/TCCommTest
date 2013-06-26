@@ -15,7 +15,7 @@
 #include "GlobalInclude.h"
 #include "MultiResultScene.h"
 */
-#define FnLog printf
+
 
 //##############################################################################################
 // MatchInvitation

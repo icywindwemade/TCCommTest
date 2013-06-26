@@ -10,7 +10,7 @@
 //#include "MessageHandler.h"
 //#include "UserInfo.h"
 //#include "../Android/CppSource/JniUtil.h"
-#define FnLog printf
+
 
 //##############################################################################################
 // Friend

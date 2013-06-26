@@ -13,7 +13,7 @@
 //#include "GlobalInclude.h"
 //#include "UserInfo.h"
 //#include "PlatformHandler.h"
-#define FnLog printf
+
 
 //##############################################################################################
 // Game

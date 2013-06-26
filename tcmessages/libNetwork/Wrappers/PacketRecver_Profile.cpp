@@ -13,7 +13,7 @@
 //#include "GlobalInclude.h"
 //#include "FriendsInfo.h"
 //#include "TutorialInfo.h"
-#define FnLog printf
+
 
 
 //##############################################################################################

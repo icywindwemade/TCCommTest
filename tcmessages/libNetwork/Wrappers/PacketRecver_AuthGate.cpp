@@ -11,7 +11,7 @@
 #include "MessageHandler.h"
 #include "PatchInfo.h"
 #include "GlobalInclude.h"*/
-#define FnLog printf
+
 
 //##############################################################################################
 // Authentication

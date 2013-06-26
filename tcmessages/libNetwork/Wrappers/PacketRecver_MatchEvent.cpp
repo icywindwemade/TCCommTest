@@ -12,7 +12,7 @@
 //#include "GameInfo.h"
 //#include "GameData.h"
 //#include "UserInfo.h"
-#define FnLog printf
+
 
 
 //##############################################################################################

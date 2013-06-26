@@ -14,7 +14,6 @@
 //#include "Commands.h"
 //#include "GlobalInclude.h"
 //#include "GameScene.h"
-#define FnLog printf
 
 
 //##############################################################################################

@@ -7,7 +7,7 @@
 #include "OnlineHandler.h"
 //#include "Client.h"
 //#include "PlatformHandler.h"
-#define FnLog printf
+
 
 //##############################################################################################
 // Client

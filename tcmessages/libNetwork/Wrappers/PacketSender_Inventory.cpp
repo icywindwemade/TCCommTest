@@ -11,7 +11,7 @@
 //#include "Client.h"
 //#include "PlatformHandler.h"
 //#include "UserInfo.h"
-#define FnLog printf
+
 
 //##############################################################################################
 // Inventory
