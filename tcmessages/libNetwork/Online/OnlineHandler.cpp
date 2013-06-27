@@ -754,7 +754,7 @@ void OLEventDisconnectedGateServer( NNetEvent* InEvent )
 			return;
 		}
 
-		if( GPatchInfo->IsNeedFirstPatch() ) return;
+		/// if( GPatchInfo->IsNeedFirstPatch() ) return;
 	}
 	else
 	{

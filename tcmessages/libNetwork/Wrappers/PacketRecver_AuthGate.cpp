@@ -5,8 +5,10 @@
 
 #include "PacketSender.h"
 #include "BuildDefine.h"
-/*
+
 #include "OnlineHandler.h"
+/*
+ 
 #include "Client.h"
 #include "MessageHandler.h"
 #include "PatchInfo.h"
@@ -22,12 +24,12 @@ RPHI( PTCL_ANS_GATE_AUTHENTICATION			)
 	ANS_GATE_AUTHENTICATION* RecvPacket = (ANS_GATE_AUTHENTICATION*)(InPacket->Data);
 
 	FnLog("NET: RECV, ANS_GATE_AUTHENTICATION");
-/*
+
 	GOnlineInfo->SetEventURL( RecvPacket->EventDomain );
 	GOnlineInfo->SetPatchURL( RecvPacket->PatchDomain );
 	GOnlineInfo->SetSocialURL( RecvPacket->WemadeSocialDomain );
 
-	GOnlineInfo->AllowGuest( RecvPacket->AllowGuestType ); */
+	GOnlineInfo->AllowGuest( RecvPacket->AllowGuestType ); 
 
 	//GOnlineInfo->SetPatchURL( "http://118.36.245.5:9001/Patch/" );
 
@@ -46,10 +48,11 @@ RPHI( PTCL_ANS_GATE_AUTHENTICATION			)
 			GPatchInfo->SkipPatch( OLPatchComplete );
 		}
 		else
+ */
 		{
 			// Request Game Server List
 			OLRequestServerChannels();
-		} */
+		}
 	}
 	else
 	{
@@ -118,7 +121,7 @@ RPHI( PTCL_ANS_GAME_INFO					)
 	ANS_GAME_INFO* RecvPacket = (ANS_GAME_INFO*)(InPacket->Data);
 
 	FnLog("NET: RECV, ANS_GAME_INFO");
-/*
+
 	// Find channel 
 	int ChannelCount = MIN( RecvPacket->ChannelCount, UD_MAX_CHANNEL_COUNT );
 	
@@ -157,7 +160,7 @@ RPHI( PTCL_ANS_GAME_INFO					)
 	}
 
 		// Progress timeout
-		ShowProgressMessage( 15000, EMCT_Reconnect );
+		// ShowProgressMessage( 15000, EMCT_Reconnect );
 
 		// Check disconnect
 		OLDisconnectGateServer();
@@ -169,6 +172,7 @@ RPHI( PTCL_ANS_GAME_INFO					)
 	{
 		FnLog("NET: RECV, ANS_GAME_INFO full channel");
 
+/*
 		if( ChannelCount <= 0 )
 		{
 			ShowAlertMessage( EMBA_OK, EMCT_Exit, L"%s||%s||%s..", IUGetLocalText(L"info_server_check"), IUGetLocalText(L"info_error_restart"), IUGetLocalText(L"info_endgame") ); // Force Exit
@@ -177,6 +181,7 @@ RPHI( PTCL_ANS_GAME_INFO					)
 		{
 			ShowAlertMessage( EMBA_OK, EMCT_Restart, L"%s|| %s", IUGetLocalText(L"info_login_fail_full"), IUGetLocalText(L"info_error_restart") );
 		}
-	}
  */
+	}
+
 }

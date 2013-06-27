@@ -17,6 +17,10 @@
 #if IOS
 #include <SystemConfiguration/SCNetworkReachability.h>
 #endif
+
+
+void Mock_OnlineInfo();
+
 //##############################################################################################
 // Authentication
 //##############################################################################################
@@ -148,7 +152,13 @@ void OLRequestGameLogin()
 
 	// Device
 	OLRefreshDeviceInfo(); // Refresh
-
+    
+    ////////////////////////////////////////////////////////////////////////////
+    /// TODO: REPLACE THIS The TEMPORARY HARDCODED INFO
+    Mock_OnlineInfo();
+    ////////////////////////////////////////////////////////////////////////////
+    
+    
 	NewPacket.NetworkModel	= (unsigned char)GOnlineInfo->NetworkModel;
 	NewPacket.OS			= (unsigned char)GOnlineInfo->DeviceOS;
 	NewPacket.OSTopVersion	= (unsigned char)(GOnlineInfo->IsRooting() ? GOnlineInfo->DeviceOSVer+10000 : GOnlineInfo->DeviceOSVer);
@@ -290,3 +300,25 @@ void OLRequestEventRecord( int InEventID, bool InSave/*=false*/ )
 	OLSendPacket( EOCT_GameServer, &NewPacket, sizeof(NewPacket) );
 }
 
+
+//##############################################################################################
+void Mock_OnlineInfo()
+{
+    GOnlineInfo->NetworkModel = 1;
+    GOnlineInfo->DeviceOS = 10;
+    GOnlineInfo->DeviceOSVer = 6;
+    strcpy( GOnlineInfo->UDID, "10DDB1B25A18");
+    strcpy( GOnlineInfo->UUID, "AB0A7D2D-1A5F-4F83-AF42-2812DF4A859A");
+    //GOnlineInfo->RNDT =;
+    strcpy( GOnlineInfo->DeviceModel, "x86_64");
+    GOnlineInfo->DeviceOS = 10;
+    GOnlineInfo->DeviceOSVer =6;
+    strcpy( GOnlineInfo->DeviceStore ,"iTunes");
+    strcpy( GOnlineInfo->DeviceVersion, "6.1");
+    GOnlineInfo->PlatformCode = 7;
+    strcpy( GOnlineInfo->PlatformUserID , "89695557306372640");
+    //GOnlineInfo->PlatformUserPW =;
+    strcpy( GOnlineInfo->PlatformUserNick, "WEME");
+    //GOnlineInfo->PlatformUserName =;
+    strcpy( GOnlineInfo->PlatformUserToken, "HStRkqyHm22mmxhtRmp2eUuLTO3G_MAlznxxx3P5sRuSq4Nq5YHuKcHXWsMpVYspEKvMM48yXrDFeL9v5A1DuA");
+}
