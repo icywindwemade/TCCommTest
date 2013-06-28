@@ -23,14 +23,26 @@ RPHI( PTCL_ANS_PRIVATE_INFO					)
 {
 	ANS_PRIVATE_INFO* RecvPacket = (ANS_PRIVATE_INFO *)(InPacket->Data);
 
-	FnLog("NET: RECV, ANS_PRIVATE_INFO"); /*
+    FnLog("");
+    FnLog("NET: RECV, ANS_PRIVATE_INFO");
+    FnLog("--------------------------------");
+    FnLog("Gem:%d"	  	        ,RecvPacket->Gem);
+	FnLog("GP:%d"			,RecvPacket->GP);	//novic_money
+	FnLog("LadderPoint:%d"		,RecvPacket->LadderPoint);
+	FnLog("DeckPoint:%d"		,RecvPacket->DeckPoint);
+	FnLog("bMatchInvitation:%d"	,RecvPacket->BattleInvitation);
+	GOnlineInfo->bAllowMessage      = RecvPacket->PostReceive == 0 ? false : true;
+    
+    /*
+     
 
 	GUserInfo->Gem				= RecvPacket->Gem;
 	GUserInfo->GP				=	RecvPacket->GP;	//novic_money
 	GUserInfo->LadderPoint		= RecvPacket->LadderPoint;
 	GUserInfo->DeckPoint			= RecvPacket->DeckPoint;
 	GUserInfo->bMatchInvitation	= RecvPacket->BattleInvitation == 0 ? false : true;
-	GOnlineInfo->bAllowMessage =  RecvPacket->PostReceive == 0 ? false : true; */
+	GOnlineInfo->bAllowMessage =  RecvPacket->PostReceive == 0 ? false : true; 
+     */
 }
 
 RPHI( PTCL_ANS_BASE_INFO					)
@@ -38,12 +50,28 @@ RPHI( PTCL_ANS_BASE_INFO					)
 	ANS_BASE_INFO *recvPacket = (ANS_BASE_INFO *)(InPacket->Data);
 
 	FnLog("NET: RECV, ANS_BASE_INFO");
-/*
+    FnLog("--------------------------------");
+    FnLog("Name: %s", recvPacket->Name);
+    FnLog("Portrait: %d", recvPacket->Portrait);
+    FnLog("Level: %d", recvPacket->Level);
+    FnLog("Exp: %d", recvPacket->Exp);
+    FnLog("EndExp: %d", recvPacket->EndExp);
+    FnLog("League: %d", recvPacket->League);
+    FnLog("Leagroup: %d", recvPacket->LeagueGroup);
+    FnLog("WinCount: %d", recvPacket->WinCount);
+    FnLog("LoseCount: %d", recvPacket->LoseCount);
+    FnLog("LeagueGroupRanking: %d", recvPacket->LeagueGroupRanking);
+    FnLog("AchievementCompleteCount: %d", recvPacket->AchievementCompletionCount);
+    
 	if( GOnlineInfo->UserKey == recvPacket->UKey )
 	{
 		strcpy( GOnlineInfo->PlatformUserName, "" );
 		strcpy( GOnlineInfo->UserNick, recvPacket->Name );
-		strcpy( GUserInfo->Nick, recvPacket->Name );
+
+    }
+
+/*
+        strcpy( GUserInfo->Nick, recvPacket->Name );
 
 		GUserInfo->Portrait		= recvPacket->Portrait;
 		GUserInfo->Level			= recvPacket->Level;
@@ -223,14 +251,17 @@ RPHI( PTCL_ANS_MISSION_HISTORY					)
 {
 	ANS_MISSION_HISTORY* RecvPacket = ( ANS_MISSION_HISTORY *)(InPacket->Data);
 
+    FnLog("");
 	FnLog("NET: RECV,  ANS_MISSION_HISTORY");
-/*
-	GUserInfo->ResetMissionHistories();
+
+
+	///GUserInfo->ResetMissionHistories();
 
 	int nMissionNo = 0;
 
 	for( int i = 0 ; i < RecvPacket->nMissionCount ; i++ )
 	{
+        /*
 		CMissionData* pCurrData = NULL;
 		pCurrData = GGameData->GetMissionData( RecvPacket->aMission[i].MissionNo );
 		if( NULL == pCurrData )
@@ -247,6 +278,14 @@ RPHI( PTCL_ANS_MISSION_HISTORY					)
 		if( ResultHistory != NewHistory ) delete NewHistory;
 
 		if( 0 == i )	nMissionNo = NewHistory->MissionNo;
+         */
+        FnLog("--------------------------------");
+        FnLog("Mission#:%d", RecvPacket->aMission[i].MissionNo);
+        FnLog("Lock:%d", RecvPacket->aMission[i].Lock);
+        FnLog("Rank:%d", RecvPacket->aMission[i].Rank);
+        FnLog("Score:%d", RecvPacket->aMissionScore[i]);
+        FnLog("Best Score:%d", RecvPacket->aMissionBestScore[i]);
+        
 	}
 
 	// Update 
@@ -277,19 +316,26 @@ RPHI( PTCL_ANS_MISSION_HISTORY					)
 // 
 // 			pCurrData = GGameData->GetOffsetMissionData( pCurrData );
 // 		}
-// 	}  */
+// 	}  
 }
 
 RPHI( PTCL_ANS_EVENT_RECORDING				)
 {
 	ANS_EVENT_RECORDING* RecvPacket = ( ANS_EVENT_RECORDING *)(InPacket->Data);
-/*
+    
+	FnLog("\nNET: RECV,  PTCL_ANS_EVENT_RECORDING");
+    FnLog("--------------------------------------");
+    FnLog("EventID: %d\nAnsCode: %d", RecvPacket->EventID, RecvPacket->AnsCode);
+    
 	if( RecvPacket->AnsCode == ANS_EVENT_RECORDING::eSuccess )
 	{
 		if( RecvPacket->EventID == 1501 )
 			GOnlineInfo->EventID2 = RecvPacket->EventID;
 		else if( RecvPacket->EventID == 1502 )
-			GTutorialInfo->DoneTutorial = true;
+{
+			/// GTutorialInfo->DoneTutorial = true;
+            FnLog("DoneTutorial=true.");
+        }
 		else
 			GOnlineInfo->EventID = RecvPacket->EventID;
 	}
@@ -301,10 +347,11 @@ RPHI( PTCL_ANS_EVENT_RECORDING				)
 		{
 		//	if( GTutorialInfo->DoneTutorial )
 		//	GTutorialInfo->DoneTutorial = false;
+            FnLog("DoneTutorial=false.");
 		}
 		else
 			GOnlineInfo->EventID = 0;
-	} */
-	FnLog("NET: RECV,  PTCL_ANS_EVENT_RECORDING");
+	} 
+
     
 }

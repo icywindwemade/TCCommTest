@@ -212,7 +212,7 @@
          landmarkType = "7">
       </FileBreakpoint>
       <FileBreakpoint
-         shouldBeEnabled = "Yes"
+         shouldBeEnabled = "No"
          ignoreCount = "0"
          continueAfterRunningActions = "No"
          filePath = "libNetwork/Online/OnlineHandler.cpp"
@@ -236,6 +236,19 @@
          endingLineNumber = "317"
          landmarkName = "Mock_OnlineInfo()"
          landmarkType = "7">
+      </FileBreakpoint>
+      <FileBreakpoint
+         shouldBeEnabled = "No"
+         ignoreCount = "0"
+         continueAfterRunningActions = "No"
+         filePath = "tcmessages/Classes/MainMenuScene.cpp"
+         timestampString = "394075807.227362"
+         startingColumnNumber = "9223372036854775807"
+         endingColumnNumber = "9223372036854775807"
+         startingLineNumber = "83"
+         endingLineNumber = "83"
+         landmarkName = "MainMenuScene::pressedButton(cocos2d::CCObject *pSender)"
+         landmarkType = "5">
       </FileBreakpoint>
    </FileBreakpoints>
 </Bucket>

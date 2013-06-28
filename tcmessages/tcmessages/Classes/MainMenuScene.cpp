@@ -46,6 +46,23 @@ SEL_CCControlHandler MainMenuScene::onResolveCCBCCControlSelector(cocos2d::CCObj
     return NULL;
 }
 
+bool MainMenuScene::onAssignCCBMemberVariable(cocos2d::CCObject *pTarget, const char *pMemberVariableName, cocos2d::CCNode *pNode)
+{
+    char btnName[40];
+    for(int ii=0;ii< BUTTONS_TOTAL; ii++) {
+        sprintf( btnName, "btn%d", ii);
+        CCB_MEMBERVARIABLEASSIGNER_GLUE(this, btnName, CCMenuItemImage*, this->btn[ii]);
+    }
+    //CCB_MEMBERVARIABLEASSIGNER_GLUE(this, "livesLabel", CCLabelTTF*, this->livesLabel);
+    //CCB_MEMBERVARIABLEASSIGNER_GLUE(this, "dodgesLabel", CCLabelTTF*, this->dodgesLabel);
+    return false;
+}
+//bool MainMenuScene::onAssignCCBCustomProperty(cocos2d::CCObject *pTarget, const char *pMemberVariableName, cocos2d::extension::CCBValue *pCCBValue)
+//{
+//    return false;
+//}
+
+
 void MainMenuScene::onClose(cocos2d::CCObject *pSender)
 {
     CCDirector::sharedDirector()->end();
@@ -63,10 +80,31 @@ void MainMenuScene::pressedButton(cocos2d::CCObject *pSender)
         case 1:
             StartNetworking();
             OLAuthenticateLogin();
+            for( int ii = 1; ii<BUTTONS_TOTAL; ii++) {
+                btn[ii]->setEnabled(true);
+            }
             break;
         case 2:
+            OLRequestInventoryCastles();
+            OLRequestInventoryUnits();
             break;
         case 3:
+            OLRequestLoadDeck();
+            break;
+        case 4:
+            OLRequestMissionHistory();
+            break;
+        case 5:
+            OLRequestProfileBaseInfo(10000000850); // wemadeID
+            OLRequestProfilePrivateInfo();
+            break;
+        case 6:
+            OLRequestEventRecord( 1486 );
+            OLRequestEventRecord( 1501 );
+            OLRequestEventRecord( 1502 );
+            break;
+        case 7:
+            OLLoadServerTime();
             break;
         default:
             //printf("Button %d pressed\n", tag);

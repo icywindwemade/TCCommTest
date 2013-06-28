@@ -20,10 +20,12 @@
 RPHI( PTCL_ANS_COMBAT_SETTING				) 
 {
 
-	printf("NET: RECV, ANS_COMBAT_SETTING\n");
-    /*	ANS_COMBAT_SETTING* RecvPacket = (ANS_COMBAT_SETTING*)(InPacket->Data);
 
+    ANS_COMBAT_SETTING* RecvPacket = (ANS_COMBAT_SETTING*)(InPacket->Data);
+
+    FnLog("");
 	FnLog("NET: RECV, ANS_COMBAT_SETTING");
+/*
 
 	GUserInfo->DeckCastle.ItemSeqNo = RecvPacket->Castle;
 	GUserInfo->DeckCastle.ItemID		= 0;
@@ -32,6 +34,7 @@ RPHI( PTCL_ANS_COMBAT_SETTING				)
 
 	if( Item ) GUserInfo->DeckCastle.ItemID = Item->ItemID;
    */
+    FnLog("Castle=%d\nMap=%d\n", RecvPacket->Castle, RecvPacket->Map);
 }
 
 RPHI( PTCL_ANS_CHANGE_COMBAT_SETTING		)

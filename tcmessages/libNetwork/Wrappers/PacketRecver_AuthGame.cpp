@@ -5,7 +5,7 @@
 
 #include "PacketSender.h"
 #include "BuildDefine.h"
-//#include "OnlineHandler.h"
+#include "OnlineHandler.h"
 //#include "Client.h"
 //#include "MessageHandler.h"
 //#include "PlatformHandler.h"
@@ -28,10 +28,12 @@ RPHI( PTCL_ANS_GAME_LOGIN					)
 	ANS_GAME_LOGIN* RecvPacket = (ANS_GAME_LOGIN*)(InPacket->Data);
 
 	FnLog("NET: RECV, ANS_GAME_LOGIN");
-/*
+
 	GOnlineInfo->AuthID = RecvPacket->gUid;
 	GOnlineInfo->AuthToken = RecvPacket->authToken;
 
+/*
+ 
 	// Close Progress
 	HideProgressMessage();
  */
@@ -48,10 +50,12 @@ RPHI( PTCL_ANS_GAME_LOGIN					)
 		FnLog("NET: RECV, Login Key %lld", RecvPacket->UKey );
 		FnLog("NET: RECV, Login gUid %lld", RecvPacket->gUid );
 		FnLog("NET: RECV, Login authToken %d", RecvPacket->authToken );
-/*
+
 		// Request all info
 		GOnlineInfo->DidLoaded( false );
 
+/*
+ 
 		// Start Ping Check
 		GOnlineInfo->StartPingTime( GNetworkManager->GetNetworkTime() );
 
@@ -230,18 +234,19 @@ RPHI( PTCL_ANS_CURRENT_TIME					)
 {
 	ANS_CURRENT_TIME* RecvPacket = (ANS_CURRENT_TIME*)(InPacket->Data);
 
-	FnLog("NET: RECV, ANS_CURRENT_TIME");
+	FnLog("\nNET: RECV, ANS_CURRENT_TIME");
+    FnLog("Time: %lld", RecvPacket->Time);
 
 	/// HideProgressMessage();
 
-	///GOnlineInfo->SetOnlineTime( RecvPacket->Time );
+	GOnlineInfo->SetOnlineTime( RecvPacket->Time );
 
 	// For One login logic
-	///if( GOnlineInfo->IsLoaded() ) return;
+	if( GOnlineInfo->IsLoaded() ) return;
 
 	FnLog("NET: LOGIC, Load All Ended...");
 
-	///GOnlineInfo->DidLoaded( true );
+	GOnlineInfo->DidLoaded( true );
 
 	///GGameInfo->LoadReplays( GOnlineInfo->UserKey );
 

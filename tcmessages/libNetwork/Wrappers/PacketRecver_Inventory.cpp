@@ -25,8 +25,11 @@ RPHI( PTCL_ANS_INVENTORY					)
 {
 	ANS_INVENTORY* RecvPacket = (ANS_INVENTORY *)(InPacket->Data);
 
+FnLog("");
 	FnLog("NET: RECV, ANS_INVENTORY");
-/*
+    FnLog("Total Items = %d", RecvPacket->ItemCount);
+
+
 	int deckCnt = 0;
 
 	for( int i = 0 ; i < RecvPacket->ItemCount ; i++ )
@@ -47,34 +50,44 @@ RPHI( PTCL_ANS_INVENTORY					)
 		NewItem.ItemLevel		= RecvPacket->Item[i].Level;
 		NewItem.ItemGradePoint  = RecvPacket->Item[i].Exp;
 
-		GUserInfo->InsertUnitItem( NewItem );
-
+		/// GUserInfo->InsertUnitItem( NewItem );
+/*
 		if( deckCnt < UD_UNIT_SLOT_COUNT && RecvPacket->Item[i].isEquip )
 		{
 			GUserInfo->DeckUnit[deckCnt].ItemSeqNo	= RecvPacket->Item[i].ItemSeqNo;
 			GUserInfo->DeckUnit[deckCnt].ItemID		= RecvPacket->Item[i].ItemID;
 			deckCnt++;
-		}
+		} */
 
 		if( RecvPacket->Item[i].isEquip && deckCnt >= UD_UNIT_SLOT_COUNT )
 		{
 			LogPrintf("IsEquip error! it's over than 6!");
 			//exit(0); //need fix
 		}
+        
+        FnLog("---------------------------------------");
+        FnLog("ItemSeqNo:%d", NewItem.ItemSeqNo);
+        FnLog("ItemID:%d", NewItem.ItemID);
+        FnLog("ItemCount:%d", NewItem.ItemCount);
+        FnLog("Category:%d", NewItem.Category);
+        FnLog("ExpireTime:%d", (int)NewItem.ExpireTime);
+        FnLog("ItemLevel:%d", NewItem.ItemLevel);
+        FnLog("ItemGradePoint:%d", NewItem.ItemGradePoint);
 	}
-*/
+
 	// Page Control
-	GUserInfo->UnitItemsPage		= RecvPacket->Page;
-	GUserInfo->UnitItemsPageCount	= RecvPacket->PageCount;
-	GUserInfo->UnitInvenCount		= RecvPacket->InventorySize; 
+//	GUserInfo->UnitItemsPage		= RecvPacket->Page;
+//	GUserInfo->UnitItemsPageCount	= RecvPacket->PageCount;
+//	GUserInfo->UnitInvenCount		= RecvPacket->InventorySize; 
 }
 
 RPHI( PTCL_ANS_CASTLE_INVENTORY				)
 {
 	ANS_CASTLE_INVENTORY* RecvPacket = (ANS_CASTLE_INVENTORY *)(InPacket->Data);
 
+FnLog("");
 	FnLog("NET: RECV, PTCL_ANS_CASTLE_INVENTORY");
-/*
+    FnLog("Total Items = %d", RecvPacket->ItemCount);
 	for( int i = 0 ; i < RecvPacket->ItemCount ; i++ )
 	{
 		NInventoryItem NewItem;
@@ -83,11 +96,19 @@ RPHI( PTCL_ANS_CASTLE_INVENTORY				)
 		NewItem.ItemCount	= RecvPacket->Item[i].ItemCount;
 		NewItem.Category	= RecvPacket->Item[i].Category;
 		NewItem.ExpireTime	= RecvPacket->Item[i].ExpireTime;
-		GUserInfo->InsertCastleItem( NewItem );
+        
+        FnLog("---------------------------------------");
+        FnLog("ItemSeqNo:%d", NewItem.ItemSeqNo);
+        FnLog("ItemID:%d", NewItem.ItemID);
+        FnLog("ItemCount:%d", NewItem.ItemCount);
+        FnLog("Category:%d", NewItem.Category);
+        FnLog("ExpireTime:%d", (int)NewItem.ExpireTime);
+        
+		///GUserInfo->InsertCastleItem( NewItem );
 	}
-*/
-	GUserInfo->CastleItemsPage		= RecvPacket->Page;
-	GUserInfo->CastleItemsPageCount	= RecvPacket->PageCount;
+    
+	///GUserInfo->CastleItemsPage		= RecvPacket->Page;
+	///GUserInfo->CastleItemsPageCount	= RecvPacket->PageCount;
 }
 
 RPHI( PTCL_ANS_DELETE_ITEM					)
