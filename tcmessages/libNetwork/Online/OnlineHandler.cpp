@@ -41,7 +41,7 @@ DWORD	GetINI_Str( OUT char* szValue, IN INT ValueSize, IN LPCSTR Filename, IN LP
 //##############################################################################################
 // GNetworkManager
 //##############################################################################################
-NNetworkManager* GNetworkManager=0;
+extern NNetworkManager* GNetworkManager;
 
 CPacketEncrypt GPacketEncrypt[EOCT_Max];
 
