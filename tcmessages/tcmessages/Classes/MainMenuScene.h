@@ -15,7 +15,7 @@ USING_NS_CC;
 USING_NS_CC_EXT;
 
 
-#define BUTTONS_TOTAL 7
+#define BUTTONS_TOTAL 8
 
 class MainMenuScene :
                     public CCLayer

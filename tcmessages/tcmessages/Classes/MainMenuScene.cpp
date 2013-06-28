@@ -6,13 +6,14 @@
 //
 //
 
-#include "MainMenuScene.h"
 #include "cocos-ext.h"
 
 USING_NS_CC;
 USING_NS_CC_EXT;
 
+#include "MainMenuScene.h"
 #include "MainMenuSceneLoader.h"
+#include "Scene2.h"
 
 //------- libNetwork headers ----------
 #include "PacketSender.h"
@@ -105,6 +106,9 @@ void MainMenuScene::pressedButton(cocos2d::CCObject *pSender)
             break;
         case 7:
             OLLoadServerTime();
+            break;
+        case 8:
+            CCDirector::sharedDirector()->replaceScene( CCTransitionMoveInR::create( 0.3, Scene2::scene()));
             break;
         default:
             //printf("Button %d pressed\n", tag);
