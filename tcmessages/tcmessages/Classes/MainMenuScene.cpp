@@ -54,8 +54,6 @@ bool MainMenuScene::onAssignCCBMemberVariable(cocos2d::CCObject *pTarget, const 
         sprintf( btnName, "btn%d", ii);
         CCB_MEMBERVARIABLEASSIGNER_GLUE(this, btnName, CCMenuItemImage*, this->btn[ii]);
     }
-    //CCB_MEMBERVARIABLEASSIGNER_GLUE(this, "livesLabel", CCLabelTTF*, this->livesLabel);
-    //CCB_MEMBERVARIABLEASSIGNER_GLUE(this, "dodgesLabel", CCLabelTTF*, this->dodgesLabel);
     return false;
 }
 //bool MainMenuScene::onAssignCCBCustomProperty(cocos2d::CCObject *pTarget, const char *pMemberVariableName, cocos2d::extension::CCBValue *pCCBValue)

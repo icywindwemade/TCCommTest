@@ -242,11 +242,11 @@
          ignoreCount = "0"
          continueAfterRunningActions = "No"
          filePath = "tcmessages/Classes/MainMenuScene.cpp"
-         timestampString = "394147857.591822"
+         timestampString = "394150946.977298"
          startingColumnNumber = "9223372036854775807"
          endingColumnNumber = "9223372036854775807"
-         startingLineNumber = "84"
-         endingLineNumber = "84"
+         startingLineNumber = "82"
+         endingLineNumber = "82"
          landmarkName = "MainMenuScene::pressedButton(cocos2d::CCObject *pSender)"
          landmarkType = "5">
       </FileBreakpoint>
@@ -255,13 +255,26 @@
          ignoreCount = "0"
          continueAfterRunningActions = "No"
          filePath = "tcmessages/Classes/MainMenuScene.cpp"
-         timestampString = "394148569.903246"
+         timestampString = "394150946.977298"
          startingColumnNumber = "9223372036854775807"
          endingColumnNumber = "9223372036854775807"
-         startingLineNumber = "111"
-         endingLineNumber = "111"
+         startingLineNumber = "109"
+         endingLineNumber = "109"
          landmarkName = "MainMenuScene::pressedButton(cocos2d::CCObject *pSender)"
          landmarkType = "5">
+      </FileBreakpoint>
+      <FileBreakpoint
+         shouldBeEnabled = "No"
+         ignoreCount = "0"
+         continueAfterRunningActions = "No"
+         filePath = "libNetwork/Wrappers/PacketRecver_Friend.cpp"
+         timestampString = "394159536.873559"
+         startingColumnNumber = "9223372036854775807"
+         endingColumnNumber = "9223372036854775807"
+         startingLineNumber = "58"
+         endingLineNumber = "58"
+         landmarkName = "RPHI( PTCL_ANS_FRIEND_RECOMMENDATION_LIST )"
+         landmarkType = "7">
       </FileBreakpoint>
    </FileBreakpoints>
 </Bucket>

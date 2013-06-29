@@ -21,16 +21,17 @@ RPHI( PTCL_ANS_PURCHASE					)
 {
 	ANS_PURCHASE* RecvPacket = (ANS_PURCHASE*)(InPacket->Data);
 
-	FnLog("NET: RECV, ANS_PURCHASE"); /*
-	NInventoryItem PrevItem;
-
-	GUserInfo->Gem = RecvPacket->Gem;
-	GUserInfo->GP = RecvPacket->GP;	//novic_money
+	FnLog("NET: RECV, ANS_PURCHASE");
+//	NInventoryItem PrevItem;
+//
+//	GUserInfo->Gem = RecvPacket->Gem;
+//	GUserInfo->GP = RecvPacket->GP;	//novic_money
+    FnLog("ItemCount=%d", RecvPacket->ItemCount);
 
 	if( RecvPacket->AnsCode == ANS_PURCHASE::eSuccess )
 	{	
-		GUserInfo->PurchaseItemCount = RecvPacket->ItemCount;
-
+		///GUserInfo->PurchaseItemCount = RecvPacket->ItemCount;
+        /*
 		if( 1 < RecvPacket->ItemCount )
 		{
 			for( int i = 0; i < RecvPacket->ItemCount; i++ )
@@ -74,9 +75,26 @@ RPHI( PTCL_ANS_PURCHASE					)
 		}
 		Telegram* NewTelegram = new Telegram( 0, EOMC_BuySuccess, 0, CustomMessage::Online );
 		IUGameManager().Message( NewTelegram );
+         */
+        
+        for( int i = 0 ; i < RecvPacket->ItemCount ; i++ )
+        {
+
+            
+            FnLog("---------------------------------------");
+            FnLog("ItemSeqNo:%d", RecvPacket->Item[i].ItemSeqNo);
+            FnLog("ItemID:%d", RecvPacket->Item[i].ItemID);
+            FnLog("ItemCount:%d", RecvPacket->Item[i].ItemCount);
+            FnLog("Category:%d", RecvPacket->Item[i].Category);
+            FnLog("ExpireTime:%lld", RecvPacket->Item[i].ExpireTime);
+            
+            ///GUserInfo->InsertCastleItem( NewItem );
+        }
 	}
 	else
 	{
+        FnLog("------> Failure");
+        /* The following causes some linker failure at LocalText::ParseLocalization
 		if( RecvPacket->AnsCode == ANS_PURCHASE::eFail )
 			wcscpy( GOnlineInfo->ErrorMsg, IUGetLocalText( L"info_connect_error_sync" ) );
 		else if( RecvPacket->AnsCode == ANS_PURCHASE::eFail_Repurchase )
@@ -97,8 +115,8 @@ RPHI( PTCL_ANS_PURCHASE					)
 			wcscpy( GOnlineInfo->ErrorMsg, IUGetLocalText( L"info_connect_error" ) );
 
 		Telegram* NewTelegram = new Telegram( 0, EOMC_BuyFail, 0, CustomMessage::Online );
-		IUGameManager().Message( NewTelegram );
-	} */
+		IUGameManager().Message( NewTelegram ); */
+	}
 }
 
 RPHI( PTCL_ANS_PURCHASE_PERMISSION				)

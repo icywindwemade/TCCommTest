@@ -102,7 +102,7 @@ FnLog("");
         FnLog("ItemID:%d", NewItem.ItemID);
         FnLog("ItemCount:%d", NewItem.ItemCount);
         FnLog("Category:%d", NewItem.Category);
-        FnLog("ExpireTime:%d", (int)NewItem.ExpireTime);
+        FnLog("ExpireTime:%lld", NewItem.ExpireTime);
         
 		///GUserInfo->InsertCastleItem( NewItem );
 	}
@@ -193,28 +193,34 @@ RPHI( PTCL_ANS_UPGRADE_ITEM					)
 
 	FnLog("NET: RECV, ANS_UPGRADE_ITEM");
 
-/*
+
 	if( RecvPacket->AnsCode == ANS_UPGRADE_ITEM::eSuccess )
 	{
+        FnLog("Success: GP=%d", RecvPacket->GP);
+
 		//CInventoryScene* pScene =  (CInventoryScene *)IUSceneManager().GetCurrentScene();
 
-		GUserInfo->GP = RecvPacket->GP;
+		///GUserInfo->GP = RecvPacket->GP;
 		
 		//if( pScene ) pScene->OnlineMessageGradeSuccess();
 
-		Telegram* NewTelegram = new Telegram( 0, EOMC_Grade_Success, 0, CustomMessage::Online );
-		IUMessage( NewTelegram );
+		///Telegram* NewTelegram = new Telegram( 0, EOMC_Grade_Success, 0, CustomMessage::Online );
+		///IUMessage( NewTelegram );
 	}
 	else
 	{
 		FnLog("NET: RECV, ANS_UPGRADE_ITEM Failed : AnsCode (%d)", RecvPacket->AnsCode);
 
-		if( RecvPacket->AnsCode == ANS_UPGRADE_ITEM::eFail_Balance )
-			ShowAlertMessage( EMBA_OK, EMCT_None, IUGetLocalText( L"info_item_buy_error_gold" ) );
-		else
-			ShowAlertMessage( EMBA_OK, EMCT_None, IUGetLocalText( L"info_unit_grow_fail_01" ) );
+		if( RecvPacket->AnsCode == ANS_UPGRADE_ITEM::eFail_Balance ) {
+            FnLog("info_item_buy_error_gold");
+			///ShowAlertMessage( EMBA_OK, EMCT_None, IUGetLocalText( L"info_item_buy_error_gold" ) );
+        }
+		else {
+			///ShowAlertMessage( EMBA_OK, EMCT_None, IUGetLocalText( L"info_unit_grow_fail_01" ) );
+            FnLog("info_unit_grow_fail_01");
+        }
 	}
- */
+
 }
 
 RPHI( PTCL_ANS_OPEN_CAPSULE					)
@@ -222,13 +228,15 @@ RPHI( PTCL_ANS_OPEN_CAPSULE					)
 	ANS_OPEN_CAPSULE* RecvPacket = (ANS_OPEN_CAPSULE*)(InPacket->Data);
 
 	FnLog("NET: RECV, ANS_OPEN_CAPSULE");
-/*
-	CCapsuleInfoScene* pScene = 0;
 
+	/// CCapsuleInfoScene* pScene = 0;
+
+    /*
 	if( IUSceneManager().GetCurrentScene()->GetChildScene( eID_Scene_CapsuleInfoPopup )  )
 	{
 		pScene = (CCapsuleInfoScene *)IUSceneManager().GetCurrentScene()->GetChildScene();
 	}
+     */
 
 	if( RecvPacket->AnsCode == ANS_OPEN_CAPSULE::eSuccess )
 	{
@@ -246,7 +254,16 @@ RPHI( PTCL_ANS_OPEN_CAPSULE					)
 		NewItem.ExpireTime	= RecvPacket->AcquiredItemExpireTime;
 		GUserInfo->InsertUnitItem( NewItem );
 
-		if( pScene ) pScene->OnlineMessageOpenSuccess( RecvPacket->AcquiredItemID );
+
+            FnLog("---------------------------------------");
+            FnLog("ItemSeqNo:%d", NewItem.ItemSeqNo);
+            FnLog("ItemID:%d", NewItem.ItemID);
+            FnLog("ItemCount:%d", NewItem.ItemCount);
+            FnLog("Category:%d", NewItem.Category);
+            FnLog("ExpireTime:%d", (int)NewItem.ExpireTime);
+            
+
+		///if( pScene ) pScene->OnlineMessageOpenSuccess( RecvPacket->AcquiredItemID );
 	}
 	else
 	{
@@ -254,6 +271,6 @@ RPHI( PTCL_ANS_OPEN_CAPSULE					)
 
 		FnLog("NET: RECV, ANS_MIX_ITEM Failed");
 
-		if( pScene ) pScene->OnlineMessageError( IUGetLocalText( L"info_connect_error_sync" ) );
-	} */
+	///	if( pScene ) pScene->OnlineMessageError( IUGetLocalText( L"info_connect_error_sync" ) );
+	}
 }

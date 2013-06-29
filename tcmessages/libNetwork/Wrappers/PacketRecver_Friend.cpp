@@ -25,12 +25,18 @@ RPHI( PTCL_ANS_DECK )
 	ANS_DECK* RecvPacket = (ANS_DECK*)(InPacket->Data);
 
 	FnLog("NET: RECV, PTCL_ANS_DECK");
-    /*
+    FnLog("-----------------------------");
+
     for( int i = 0; i < UD_UNIT_SLOT_COUNT; i++ )
     {
-        GFriendsInfo->GameFriendUnitIDs[i] = RecvPacket->UnitIDs[i];
+        /// GFriendsInfo->GameFriendUnitIDs[i] = RecvPacket->UnitIDs[i];
+        FnLog("Unit[%d] = %d", i, RecvPacket->UnitIDs[i]);
     }
-    GFriendsInfo->GameFriendCastleID = RecvPacket->CastleID;
+    
+    FnLog("-----------------------------");
+    
+    /*
+     GFriendsInfo->GameFriendCastleID = RecvPacket->CastleID;
     
 	// Send Message to FriendSub_BattleInfo
     Telegram* NewTelegram = new Telegram( 0, EOMC_UserDeck, 0, CustomMessage::Online );
@@ -45,9 +51,16 @@ RPHI( PTCL_ANS_FRIEND_RECOMMENDATION_LIST					)
 	ANS_FRIEND_RECOMMENDATION_LIST* RecvPacket = (ANS_FRIEND_RECOMMENDATION_LIST*)(InPacket->Data);
 
 	FnLog("NET: RECV, ANS_FRIEND_RECOMMENDATION_LIST");
-/*
+    FnLog("Total Recommendations = %d", RecvPacket->FriendCount);
+
 	for( int i = 0; i < RecvPacket->FriendCount; i++ )
 	{
+        FnLog("Name: %s", RecvPacket->Friend[i].Name );
+        FnLog("Ukey: %lld", RecvPacket->Friend[i].UKey);
+		FnLog("PortraitNo: %d", RecvPacket->Friend[i].Portrait);
+		FnLog("Status: %d", RecvPacket->Friend[i].Status);
+		FnLog("Type: %d", RecvPacket->Friend[i].Type);
+        /*
 		FUserProfile TargetUser;
 		TargetUser.UserKey			= RecvPacket->Friend[i].UKey;
 		TargetUser.PortraitNo		= RecvPacket->Friend[i].Portrait;
@@ -64,11 +77,12 @@ RPHI( PTCL_ANS_FRIEND_RECOMMENDATION_LIST					)
 
 		// add Recommendation Friend 
 		GFriendsInfo->AddFriend( &GFriendsInfo->SearchedFriendList, &TargetUser );
+         */
 	}
 
 	// Send Message to FriendTab_FindFriends
-	Telegram* NewTelegram = new Telegram( 0, EOMC_RecommendFriend, 0, CustomMessage::Online );
-	IUGameManager().Message( NewTelegram ); */
+	///Telegram* NewTelegram = new Telegram( 0, EOMC_RecommendFriend, 0, CustomMessage::Online );
+	///IUGameManager().Message( NewTelegram ); */
 }
 
 // FriendTab_GameFriends
@@ -78,6 +92,17 @@ RPHI( PTCL_ANS_FRIEND_LIST					)
 
 	FnLog("NET: RECV, ANS_FRIEND_LIST");
 
+    FnLog("Total Friends = %d", RecvPacket->FriendCount);
+    
+	for( int i = 0; i < RecvPacket->FriendCount; i++ )
+	{
+        FnLog("----------------------------------------");
+        FnLog("Name: %s", RecvPacket->Friend[i].Name );
+        FnLog("Ukey: %lld", RecvPacket->Friend[i].UKey);
+		FnLog("PortraitNo: %d", RecvPacket->Friend[i].Portrait);
+		FnLog("Status: %d", RecvPacket->Friend[i].Status);
+		FnLog("Type: %d", RecvPacket->Friend[i].Type);
+    }
 /*    bool bMyFriends = true;
 	if( GOnlineInfo->UserKey != RecvPacket->UKey )
 		bMyFriends = false;
@@ -161,7 +186,15 @@ RPHI( PTCL_ANS_SEARCH_FRIEND				)
 {
 	ANS_SEARCH_FRIEND* RecvPacket = (ANS_SEARCH_FRIEND*)(InPacket->Data);
 
-	FnLog("NET: RECV, ANS_SEARCH_FRIEND"); 
+	FnLog("NET: RECV, ANS_SEARCH_FRIEND");
+    
+
+    FnLog("Name: %s", RecvPacket->Name );
+    FnLog("Ukey: %lld", RecvPacket->UKey);
+	FnLog("PortraitNo: %d", RecvPacket->Portrait);
+	FnLog("isFriend: %d", RecvPacket->IsFriend);
+    FnLog("Status: %d", RecvPacket->Status);
+
 
 	/* // send message to child scene
 	++GFriendsInfo->SearchedPacketCount;
@@ -193,8 +226,24 @@ RPHI( PTCL_ANS_ADD_FRIEND					)
 {
 	// more fix
 	ANS_ADD_FRIEND* RecvPacket = (ANS_ADD_FRIEND*)(InPacket->Data);
+    static const char *ErrStr [] = {
+        "eSuccess",
+        "eFail",
+        "eFail_Duplication",
+        "eFail_NoMember",
+        "eFail_None_AddType"
+    } ;
 
 	FnLog("NET: RECV, ANS_ADD_FRIEND");
+    FnLog(" AnsCode = %d (%s) \n", RecvPacket->AnsCode,  ErrStr[RecvPacket->AnsCode]);
+    /*
+    eSuccess = 0,
+    eFail,
+    eFail_Duplication,
+    eFail_NoMember,
+    eFail_None_AddType,
+     */
+
 /*
 	HideProgressMessage();
 
@@ -311,8 +360,14 @@ RPHI( PTCL_ANS_DELETE_FRIEND					)
 {
 	ANS_DELETE_FRIEND* RecvPacket = (ANS_DELETE_FRIEND*)(InPacket->Data);
 
-	FnLog( "NET: RECV, ANS_DELETE_FRIEND: %d", RecvPacket->AnsCode );
-/*
+    static const char *ErrStr [] = {
+        "eSuccess",
+        "eFail",
+        "eFail_NoMember",
+        "eFail_Unknown_Req"
+    } ;
+	FnLog( "NET: RECV, ANS_DELETE_FRIEND: %d (%s)", RecvPacket->AnsCode, ErrStr[RecvPacket->AnsCode] );
+    /*
 	HideProgressMessage();
 
 	switch( RecvPacket->AnsCode )
