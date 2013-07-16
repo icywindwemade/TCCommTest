@@ -4,7 +4,7 @@
 
 #include "FileManager.h"
 #include <vector>
-//#include "AutoSync.h"
+#include "AutoSync.h"
 #include "FileIO.h"
 
 #if WIN32 || ANDROID
@@ -213,17 +213,17 @@ INT appLoadCompressedFile( const char* InFilename, char** OutBuffer )
 }
 
 //	CFileManager
-//IULock g_FileListLock;
+IULock g_FileListLock;
 
 CFileManager::CFileManager()
 {
-	//InitLock( g_FileListLock );
+	InitLock( g_FileListLock );
 }
 
 
 CFileManager::~CFileManager()
 {
-///	DelLock( g_FileListLock );
+    DelLock( g_FileListLock );
 
 #if TEST_TMAP
 	Files.Empty();
@@ -237,9 +237,25 @@ void CFileManager::Init()
 	Load();
 }
 
+CFileManager * gFileMgr = NULL;
+CFileManager * CFileManager::sharedInstance() {
+    if (gFileMgr == NULL) {
+        gFileMgr = new CFileManager();
+    }
+    
+    return gFileMgr;
+}
+
+void * CFileManager::deleteInstance() {
+    if( gFileMgr ) {
+        delete gFileMgr;
+        gFileMgr = NULL;
+    }
+}
+
 void CFileManager::Load()
 {
-///	CAutoSync lock( g_FileListLock );
+    CAutoSync lockVar( g_FileListLock );
 
 #if TEST_TMAP
 	Files.Empty();
@@ -479,7 +495,9 @@ int CFileManager::LoadFile( const char *filename, char** pBuf )
 	char fullFilename[MAX_PATH];
 	bool bArchive;
 
-///	CAutoSync lock( g_FileListLock );
+    CAutoSync lockVar( g_FileListLock );
+    EnterLock(g_FileListLock);
+    
 	std::map<std::string, FilenameAndPath>::iterator it = m_FileMap.find( filename );
 	if( it != m_FileMap.end() )
 	{
@@ -610,7 +628,8 @@ int CFileManager::LoadBinFile( const char *filename, char** pBuf )
 
 void CFileManager::GetFullFilename( char *szFullFilename, const char *szFilename, bool &bArchive )
 {
-///	CAutoSync lock( g_FileListLock );
+    CAutoSync lockVar( g_FileListLock );
+    EnterLock( g_FileListLock );
 	std::map<std::string, FilenameAndPath>::iterator it = m_FileMap.find( szFilename );
 	if( it != m_FileMap.end() )
 	{

@@ -79,6 +79,11 @@ bool IU::Init( int iWidth, int iHeight, int iScale, int dir )
 	return true;
 }
 
+int IU::LoadTexture( const std::string &lpFilename )
+{
+	return m_TextureMgr.LoadTexture( lpFilename );
+}
+
 /*
 int IU::UpdateTime()
 {

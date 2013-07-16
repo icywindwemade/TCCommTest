@@ -152,12 +152,23 @@ extern CLocalText		g_LocalText;
 #include "../Android/CppSource/JniUtil.h"
 
 #else	// iOS
+
+#include <pthread.h>
+#include <unistd.h>
 /*
 #define IULock			NSLock *
 #define InitLock(x)		x = [[NSLock alloc]init]
 #define DelLock(x)		(void)( x )
 #define EnterLock(x)	[x lock]
-#define ReleaseLock(x)	[x unlock]  */
+#define ReleaseLock(x)	[x unlock]
+ */
+
+#define IULock          pthread_mutex_t
+#define InitLock(x)     pthread_mutex_init(&x, NULL)
+#define DelLock(x)      pthread_mutex_destroy(&x)
+#define EnterLock(x)    pthread_mutex_lock(&x)
+#define ReleaseLock(x)  pthread_mutex_unlock(&x)
+
 #define IUSleep(x)		usleep(x)
 #define _splitpath		splitpath
 #define UNREFERENCED_PARAMETER(x)		//(x)

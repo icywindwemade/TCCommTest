@@ -4,6 +4,7 @@
 #include <string.h>
 
 #include "IURand.h"
+//#include "TextureManager.h"
 
 const int DeltaMilisec =33;
 
@@ -36,6 +37,9 @@ public:
 	void UpdateForFPS( int delta );
 	float GetFPS() { return m_fFPS; }
 	UINT Rand()		{ return m_Rand.Rand(); }
+    
+    /// CTextureManager &GetTextureManager() { return m_TextureMgr; }
+    /// int LoadTexture( const std::string &lpFilename );
 
 	void SetUID( int uID )	{ m_UID = uID; }
 	int GetUID()	{ return m_UID++; }
@@ -53,6 +57,7 @@ public:
 
 protected:
 private:
+    /// CTextureManager		m_TextureMgr;
 
 	int m_iWidth;
 	int m_iHeight;
@@ -147,7 +152,7 @@ void splitpath( const char*szFullPath, char* szDrive, char* szDir, char* szName,
 #endif	// !WIN32
 
 #define IURand()				gIU->Rand()
-
+#define IUTextureManager()		gIU->GetTextureManager()
 
 #if defined( _DEBUG) || defined( DEBUG )
 #define IULOG	gIU->Log

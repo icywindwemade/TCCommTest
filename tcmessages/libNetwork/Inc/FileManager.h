@@ -34,12 +34,14 @@ struct FilenameAndPath
 class CFileManager
 {
 
+	CFileManager();  // making this private so only sharedInstance() is the way to obtain instance
 public:
 
-	CFileManager();
-	~CFileManager();
+~CFileManager();
 
 	void Init();
+    static CFileManager * sharedInstance();
+    static void deleteInstance();
 
 	void Load();
 	void AddFilePathname( const char* InFilename, const char* InPathname );
