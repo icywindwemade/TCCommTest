@@ -246,7 +246,7 @@ CFileManager * CFileManager::sharedInstance() {
     return gFileMgr;
 }
 
-void * CFileManager::deleteInstance() {
+void CFileManager::deleteInstance() {
     if( gFileMgr ) {
         delete gFileMgr;
         gFileMgr = NULL;
