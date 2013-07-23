@@ -220,7 +220,7 @@ RPHI( PTCL_ANS_GROUP_RANKING				)
 
 RPHI( PTCL_ANS_ACHIEVEMENT_HISTORY			)
 {
-	ANS_ACHIEVEMENT_HISTORY * RecvPacket = (ANS_ACHIEVEMENT_HISTORY *)(InPacket->Data);
+	///ANS_ACHIEVEMENT_HISTORY * RecvPacket = (ANS_ACHIEVEMENT_HISTORY *)(InPacket->Data);
 
 	FnLog("NET: RECV, ANS_ACHIEVEMENT_HISTORY");
     /*
@@ -257,7 +257,7 @@ RPHI( PTCL_ANS_MISSION_HISTORY					)
 
 	///GUserInfo->ResetMissionHistories();
 
-	int nMissionNo = 0;
+///	int nMissionNo = 0;
 
 	for( int i = 0 ; i < RecvPacket->nMissionCount ; i++ )
 	{

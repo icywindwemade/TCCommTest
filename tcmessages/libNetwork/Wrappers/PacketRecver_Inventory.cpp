@@ -113,7 +113,7 @@ FnLog("");
 
 RPHI( PTCL_ANS_DELETE_ITEM					)
 {
-	ANS_DELETE_ITEM* RecvPacket = (ANS_DELETE_ITEM *)(InPacket->Data);
+///	ANS_DELETE_ITEM* RecvPacket = (ANS_DELETE_ITEM *)(InPacket->Data);
 
 	FnLog("NET: RECV, ANS_DELETE_ITEM");
 /*

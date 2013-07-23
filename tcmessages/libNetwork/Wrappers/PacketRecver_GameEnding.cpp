@@ -31,7 +31,7 @@ enum eReward
 //##############################################################################################
 RPHI( PTCL_EVENT_GAME_ENDING				)
 {
-	EVENT_GAME_ENDING* RecvPacket = (EVENT_GAME_ENDING*)(InPacket->Data);
+	///EVENT_GAME_ENDING* RecvPacket = (EVENT_GAME_ENDING*)(InPacket->Data);
 
 	FnLog("NET: RECV, EVENT_GAME_ENDING");  
 /*
@@ -47,7 +47,7 @@ RPHI( PTCL_EVENT_GAME_ENDING				)
 
 RPHI( PTCL_ANS_GAME_RECORDING				)
 {
-	ANS_GAME_RECORDING* RecvPacket = (ANS_GAME_RECORDING*)(InPacket->Data);
+	///ANS_GAME_RECORDING* RecvPacket = (ANS_GAME_RECORDING*)(InPacket->Data);
 
 	FnLog("NET: RECV, ANS_GAME_RECORDING");  /*
 

@@ -339,7 +339,7 @@ RPHI( PTCL_ANS_ADD_FRIEND					)
 				//	{
 				//		FriendPage* pScene = (FriendPage *)IUSceneManager().GetCurrentScene()->GetChildScene();
 
-				//		if( pScene /*&& pScene->GetID() == FriendTab_FriendKakao )
+				//		if( pScene && pScene->GetID() == FriendTab_FriendKakao )
 				//		{
 				//			FriendKakao* KakaoTab = (FriendKakao*)( pScene->GetCurrentTab() );
 				//			KakaoTab->SetUIFriendPage();
@@ -394,7 +394,7 @@ RPHI( PTCL_ANS_DELETE_FRIEND					)
 // FriendTab_PlatForm
 RPHI( PTCL_ANS_FRIEND_MATCH_IN_GAME )
 {
-	ANS_FRIEND_MATCH_IN_GAME* RecvPacket = (ANS_FRIEND_MATCH_IN_GAME*)(InPacket->Data);
+	///ANS_FRIEND_MATCH_IN_GAME* RecvPacket = (ANS_FRIEND_MATCH_IN_GAME*)(InPacket->Data);
 
 	FnLog("NET: RECV, ANS_FRIEND_MATCH_IN_GAME");
     /*

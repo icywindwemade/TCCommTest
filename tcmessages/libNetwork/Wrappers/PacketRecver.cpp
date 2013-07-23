@@ -57,7 +57,7 @@ RPHI( CLIENT_PING		                    )
 
 RPHI( PTCL_EVENT_ACHIEVEMENT_COMPLETION		)
 {
-	EVENT_ACHIEVEMENT_COMPLETION* recvPacket = (EVENT_ACHIEVEMENT_COMPLETION*)(InPacket->Data);
+	///EVENT_ACHIEVEMENT_COMPLETION* recvPacket = (EVENT_ACHIEVEMENT_COMPLETION*)(InPacket->Data);
 
 	FnLog("NET: RECV, EVENT_ACHIEVEMENT_COMPLETION");
 	/*
@@ -98,7 +98,7 @@ RPHI( PTCL_EVENT_ACHIEVEMENT_COMPLETION		)
 
 RPHI( PTCL_GAME_NOTIFICATION					)
 {
-	GAME_NOTIFICATION* RecvPacket = (GAME_NOTIFICATION*)(InPacket->Data);
+/// GAME_NOTIFICATION* RecvPacket = (GAME_NOTIFICATION*)(InPacket->Data);
     FnLog(" RECV: Game Notification.");
     
 /*
@@ -169,7 +169,7 @@ RPHI( PTCL_GAME_NOTIFICATION					)
 
 RPHI( PTCL_NOTIFY_ITEM_EXPIRE					)
 {
-	NOTIFY_ITEM_EXPIRE * RecvPacket = (NOTIFY_ITEM_EXPIRE *)(InPacket->Data);
+///	NOTIFY_ITEM_EXPIRE * RecvPacket = (NOTIFY_ITEM_EXPIRE *)(InPacket->Data);
     FnLog(" RECV: Item Expired");
 // 	NInventoryItem* pInvenItem;
 // 	NInventoryItem* pInvenCastle;

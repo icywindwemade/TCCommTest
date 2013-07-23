@@ -190,6 +190,8 @@ void OLRequestGameLogin()
 	FnLog( "NET: SEND, LOGIN Start" );
 	FnLog( "VERSION: Major, %d", MajorVersion );
 	FnLog( "VERSION: Minor, %d", MinorVersion );
+    FnLog( "VERSION: Build, %d", BuildRevision);
+    
 	FnLog( "CHANNEL: ID, %d", TargetChannel->ID );
     
 	FnLog( "DEVICE: NET, %d", GOnlineInfo->NetworkModel );

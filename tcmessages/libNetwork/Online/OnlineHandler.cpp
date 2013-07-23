@@ -475,8 +475,8 @@ int OLCallbackBuildPacket( NNetworkConnection* InConnection, void* InOutData, in
 
 void OLCallbackFlushSync( int InSyncBytes )
 {
-	int Result;
-	int Frame = InSyncBytes < 0 ? 0 : GNetworkManager->GetSyncFrame();
+	//int Result;
+	//int Frame = InSyncBytes < 0 ? 0 : GNetworkManager->GetSyncFrame();
     FnLog("OLCallbackFlushSync");
 /*
 	if( false == GGameInfo->IsMulti() )
@@ -1206,7 +1206,7 @@ void OLResetMember()
 /*
 void OLInitGameData( int InOption )
 {
-	/*if( !GMessageInfo->IsActivated() )
+	if( !GMessageInfo->IsActivated() )
 	{
 		GMessageInfo->Activate( true );
 	}
@@ -1353,9 +1353,10 @@ void OLCheckAutoAddFriend()
 {
 	if( !GOnlineInfo->IsLogin() ) return;
 
-	long long ResultKeyValue = 0;
-	char ResultNick[UD_NICK_LEN] = {0,};
 /*
+ long long ResultKeyValue = 0;
+	char ResultNick[UD_NICK_LEN] = {0,};
+
 	ResultKeyValue = PFGetAddedFriend( ResultNick );
 	if( strlen( ResultNick ) > 0 )
 	{
@@ -1427,9 +1428,10 @@ void OLBeganMatchInviting( int InBattleMode, int InMatchMode, int InMatchTarget/
 {
 	GOnlineInfo->BeganMatchInviting( InBattleMode, InMatchMode, InMatchTarget, InTargetKey, InTargetName );
 
-	WCHAR TempWideText[256] = {0,};
-	char TempText[128] = {0,};
 /**
+ WCHAR TempWideText[256] = {0,};
+	char TempText[128] = {0,};
+
 	if( InInvited )
 	{
 		// Accepted Match Invitation

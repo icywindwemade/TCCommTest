@@ -2488,10 +2488,10 @@
 			isa = PBXGroup;
 			children = (
 				36B775691774DCE900EC8FE5 /* User */,
-				36B7756E1774DCE900EC8FE5 /* Engine */,
+				36B7756E1774DCE900EC8FE5 /* Network */,
 				36B775731774DCE900EC8FE5 /* Inc */,
 				36B775A41774DCE900EC8FE5 /* Online */,
-				36B775AB1774DCE900EC8FE5 /* Wrappers */,
+				36B775AB1774DCE900EC8FE5 /* PacketTxRx */,
 				36B774311774D26800EC8FE5 /* libNetwork.h */,
 				36B774331774D26800EC8FE5 /* libNetwork.m */,
 				36B7742F1774D26800EC8FE5 /* Supporting Files */,
@@ -2518,7 +2518,7 @@
 			path = User;
 			sourceTree = "<group>";
 		};
-		36B7756E1774DCE900EC8FE5 /* Engine */ = {
+		36B7756E1774DCE900EC8FE5 /* Network */ = {
 			isa = PBXGroup;
 			children = (
 				361CF251177A51CE0058FB0F /* NetworkMonitor.cpp */,
@@ -2528,6 +2528,7 @@
 				36B775711774DCE900EC8FE5 /* NetworkManager.cpp */,
 				36B775721774DCE900EC8FE5 /* NetworkManager.h */,
 			);
+			name = Network;
 			path = Engine;
 			sourceTree = "<group>";
 		};
@@ -2601,7 +2602,7 @@
 			path = Online;
 			sourceTree = "<group>";
 		};
-		36B775AB1774DCE900EC8FE5 /* Wrappers */ = {
+		36B775AB1774DCE900EC8FE5 /* PacketTxRx */ = {
 			isa = PBXGroup;
 			children = (
 				36B775AC1774DCE900EC8FE5 /* PacketReceiver_Ranking.cpp */,
@@ -2628,6 +2629,7 @@
 				36B775C11774DCE900EC8FE5 /* PacketSender_Profile.cpp */,
 				36B775C21774DCE900EC8FE5 /* PacketSender_Ranking.cpp */,
 			);
+			name = PacketTxRx;
 			path = Wrappers;
 			sourceTree = "<group>";
 		};

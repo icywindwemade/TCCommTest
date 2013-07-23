@@ -21,7 +21,7 @@
 //##############################################################################################
 RPHI( PTCL_REPLICATION_READY					)
 {
-	REPLICATION_READY* RecvPacket = (REPLICATION_READY*)(InPacket->Data);
+	///REPLICATION_READY* RecvPacket = (REPLICATION_READY*)(InPacket->Data);
 
 	FnLog("NET: RECV, REPLICATION_READY ");
     /*
@@ -46,7 +46,7 @@ RPHI( PTCL_REPLICATION_SYNC					)
 
 RPHI( PTCL_REPLICATION_ACTION				)
 {
-	REPLICATION_ACTION* RecvPacket = (REPLICATION_ACTION*)(InPacket->Data);
+	///REPLICATION_ACTION* RecvPacket = (REPLICATION_ACTION*)(InPacket->Data);
 	FnLog("NET: RECV, PTCL_REPLICATION_ACTION ");
     
 
@@ -87,7 +87,7 @@ RPHI( PTCL_REPLICATION_ACTION				)
 
 RPHI( PTCL_REPLICATION_PING					)
 {
-	REPLICATION_PING* RecvPacket = (REPLICATION_PING*)(InPacket->Data);
+	///REPLICATION_PING* RecvPacket = (REPLICATION_PING*)(InPacket->Data);
 
 	FnLog("NET: RECV, PTCL_REPLICATION_PING ");
     /*
